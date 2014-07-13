@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<root>
+﻿<root>
   <categories>
     <category name = "Food"/>
     <category name = "Stay"/>
@@ -19,6 +18,12 @@
     <item name = "Tinasdfdi" category = " " date = "7/9/2014" cost = "" place = ""  />
   </items>
   <wishlist>
-    <wish name = " " category = " " cost = "" />
+    <wish name = "asdf " category = " " cost = "" />
+    <wish name = " asdfawerawq" category = " " cost = "" />
+    <wish name = "wertwer " category = " " cost = "" />
+    <wish name = "wertwert " category = " " cost = "" />
+    <wish name = "sdfg " category = " " cost = "" />
+    <wish name = "wrye " category = " " cost = "" />
+    <wish name = "qwerfds " category = " " cost = "" />
   </wishlist>
 </root>

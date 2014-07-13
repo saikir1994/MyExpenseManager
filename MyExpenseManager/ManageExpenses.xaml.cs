@@ -87,7 +87,7 @@ namespace MyExpenseManager
                 XDocument file = XDocument.Load(@"ExpensesFile.xml");
                 XElement Categories = file.Root.Element("categories");
                 Categories.Add(new XElement("category", new XAttribute("name", CategoriesList.Text)));
-                using (FileStream stream = File.Open(@"ExpensesFile.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                using (FileStream stream = File.Open(@"ExpensesFile.xml", FileMode.Truncate, FileAccess.ReadWrite))
                 {
                     file.Save(stream);
                 }
@@ -96,8 +96,8 @@ namespace MyExpenseManager
             if (CategoriesList.Text != string.Empty && ItemBox.Text != string.Empty)
             {
                 XDocument file = XDocument.Load(@"ExpensesFile.xml");
-                XElement Categories = file.Root.Element("items");
-                Categories.Add(new XElement("item", new XAttribute("name", ItemBox.Text), new XAttribute("category", CategoriesList.Text), new XAttribute("date", DateSelector.ValueString), new XAttribute("cost", CostBox.Text), new XAttribute("place", LocationBox.Text)));
+                XElement Items = file.Root.Element("items");
+                Items.Add(new XElement("item", new XAttribute("name", ItemBox.Text), new XAttribute("category", CategoriesList.Text), new XAttribute("date", DateSelector.ValueString), new XAttribute("cost", CostBox.Text), new XAttribute("place", LocationBox.Text)));
                 using (FileStream stream = File.Open(@"ExpensesFile.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite))
                 {
                     file.Save(stream);

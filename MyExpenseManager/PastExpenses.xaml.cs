@@ -26,11 +26,6 @@ namespace MyExpenseManager
             HistList.Children.Clear();
             XDocument file = XDocument.Load(@"ExpensesFile.xml");
             List<XElement> Items = file.Root.Element("items").Elements().ToList<XElement>();
-            foreach (var item in Items)
-            {
-                DateTime.Compare(Convert.ToDateTime(item.Attribute("date").Value), (DateTime)From.Value);
-                DateTime.Compare(Convert.ToDateTime(item.Attribute("date").Value), (DateTime)To.Value);
-            }
             var reqitems = from XElement item in Items
                            where DateTime.Compare(Convert.ToDateTime(item.Attribute("date").Value), (DateTime)From.Value) >= 0 && DateTime.Compare(Convert.ToDateTime(item.Attribute("date").Value), (DateTime)To.Value) <= 0
                            select item;

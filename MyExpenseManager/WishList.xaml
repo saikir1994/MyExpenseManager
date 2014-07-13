@@ -5,6 +5,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -19,12 +20,26 @@
 
             <!--Panorama item one-->
             <phone:PanoramaItem Header="Current List">
-                <Grid/>
+                <Grid>
+                    <ScrollViewer HorizontalAlignment="Left" Height="473" VerticalAlignment="Top" Width="420">
+                        <StackPanel x:Name="WiList" Height="452" Width="405"/>
+                    </ScrollViewer>
+
+                </Grid>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Add Item">
-                <Grid/>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Margin="15,55,0,0" Height="25" Width="80"/>
+                    <TextBox x:Name="ItemBox" HorizontalAlignment="Left" Height="72" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Margin="110,30,0,0"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" Margin="10,144,0,0" RenderTransformOrigin="0.494,2.852"/>
+                    <toolkit:AutoCompleteBox x:Name="CategoriesList" Margin="110,121,0,292"/>
+                    <TextBox x:Name="CostBox" HorizontalAlignment="Left" Height="74" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Margin="110,204,0,0" InputScope="Number"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Price;" VerticalAlignment="Top" Margin="10,223,0,0"/>
+                    <Button x:Name="AddItem" Content="Add Item" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.483,4.931" Margin="110,340,0,0" Width="210" Click="AddItem_Click"/>
+
+                </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>
