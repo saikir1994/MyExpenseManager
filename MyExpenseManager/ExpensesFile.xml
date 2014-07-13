@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <categories>
+    <category name = "Food"/>
+    <category name = "Stay"/>
+    <category name = "Clothes"/>
+    <category name = "Miscellneous"/>
+    <category name = "Others"/>
+  </categories>
+  <items>
+    <item name = "Tindi" category = " " date = "4/30/1994" cost = "" place = ""  />
+    <item name = "sadf" category = " " date = "7/9/2014" cost = "" place = ""  />
+    <item name = "asdfasd" category = " " date = "7/9/2014" cost = "" place = ""  />
+    <item name = "Tiasdfndi" category = " " date = "4/30/1994" cost = "" place = ""  />
+    <item name = "Tiasdfasndi" category = " " date = "4/30/1994" cost = "" place = ""  />
+    <item name = "Tiasdfadsfasndi" category = " " date = "7/9/2014" cost = "" place = ""  />
+    <item name = "Tiasdfndi" category = " " date = "7/9/2014" cost = "" place = ""  />
+    <item name = "Tinsadfdi" category = " " date = "7/9/2014" cost = "" place = ""  />
+    <item name = "Tinasdfdi" category = " " date = "7/9/2014" cost = "" place = ""  />
+  </items>
+  <wishlist>
+    <wish name = " " category = " " cost = "" />
+  </wishlist>
+</root>
