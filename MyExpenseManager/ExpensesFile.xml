@@ -26,4 +26,11 @@
     <wish name = "wrye " category = " " cost = "" />
     <wish name = "qwerfds " category = " " cost = "" />
   </wishlist>
+  <balance>
+    <bank balance = "0"/>
+    <cash inhand = "0" />
+  </balance>
+<background>
+  <color hex="#FF000000" a = "255" r="0" b="0" g="0"/>
+</background>
 </root>

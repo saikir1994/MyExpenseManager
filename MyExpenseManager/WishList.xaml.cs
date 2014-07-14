@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Xml.Linq;
 using System.IO;
+using System.Windows.Media;
 
 namespace MyExpenseManager
 {
@@ -73,7 +74,7 @@ namespace MyExpenseManager
                 XDocument file = XDocument.Load(@"ExpensesFile.xml");
                 XElement Wishes = file.Root.Element("wishlist");
                 Wishes.Add(new XElement("wish", new XAttribute("name", ItemBox.Text), new XAttribute("category", CategoriesList.Text), new XAttribute("cost", CostBox.Text)));
-                using (FileStream stream = File.Open(@"ExpensesFile.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                using (FileStream stream = File.Open(@"ExpensesFile.xml", FileMode.Truncate, FileAccess.ReadWrite))
                 {
                     file.Save(stream);
                 }
@@ -83,6 +84,11 @@ namespace MyExpenseManager
             CategoriesList.Text = "";
             CostBox.Text = "";
         }
-        
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            XDocument file = XDocument.Load(@"ExpensesFile.xml");
+            XElement BGcolor = file.Root.Element("background").Element("color");
+            LayoutRoot.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(BGcolor.Attribute("a").Value), Convert.ToByte(BGcolor.Attribute("r").Value), Convert.ToByte(BGcolor.Attribute("g").Value), Convert.ToByte(BGcolor.Attribute("b").Value)));
+        }
     }
 }

@@ -15,7 +15,7 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Height="768" VerticalAlignment="Bottom" Background="#FF1F9DB9">
+    <Grid x:Name="LayoutRoot" Height="768" VerticalAlignment="Bottom">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -54,7 +54,7 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Margin="14,241,10,28" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+        <Grid x:Name="ContentPanel" Margin="14,80,10,37" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Height="490" Grid.Row="1">
             <TextBlock HorizontalAlignment="Left" Height="55" Margin="38,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="327" FontSize="36" Text="Past Expenses">
             	<i:Interaction.Triggers>
             		<i:EventTrigger EventName="MouseLeftButtonDown">
@@ -62,17 +62,24 @@
             		</i:EventTrigger>
             	</i:Interaction.Triggers>
             </TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="55" Margin="38,183,0,0" TextWrapping="Wrap" Text="Manage Expenses" VerticalAlignment="Top" Width="327" FontSize="36" Grid.Row="1">
+            <TextBlock HorizontalAlignment="Left" Height="55" Margin="38,174,0,0" TextWrapping="Wrap" Text="Manage Expenses" VerticalAlignment="Top" Width="327" FontSize="36">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseLeftButtonDown">
 						<ec:NavigateToPageAction TargetPage="/ManageExpenses.xaml"/>
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
             </TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="55" Margin="38,314,0,0" TextWrapping="Wrap" Text="Wish List" VerticalAlignment="Top" Width="327" FontSize="36" Grid.Row="2">
+            <TextBlock HorizontalAlignment="Left" Height="55" Margin="38,289,0,0" TextWrapping="Wrap" Text="Wish List" VerticalAlignment="Top" Width="327" FontSize="36">
             	<i:Interaction.Triggers>
             		<i:EventTrigger EventName="MouseLeftButtonDown">
             			<ec:NavigateToPageAction TargetPage="/WishList.xaml"/>
+            		</i:EventTrigger>
+            	</i:Interaction.Triggers>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="55" Margin="38,395,0,0" TextWrapping="Wrap" Text="Settings" VerticalAlignment="Top" Width="327" FontSize="36">
+            	<i:Interaction.Triggers>
+            		<i:EventTrigger EventName="MouseLeftButtonDown">
+            			<ec:NavigateToPageAction TargetPage="/Settings.xaml"/>
             		</i:EventTrigger>
             	</i:Interaction.Triggers>
             </TextBlock>

@@ -10,6 +10,8 @@ using Microsoft.Phone.Shell;
 using MyExpenseManager.Resources;
 using Windows.Storage;
 using System.IO.IsolatedStorage;
+using System.Xml.Linq;
+using System.Windows.Media;
 
 namespace MyExpenseManager
 {
@@ -24,9 +26,12 @@ namespace MyExpenseManager
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
-
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
+            XDocument file = XDocument.Load(@"ExpensesFile.xml");
+            XElement BGcolor = file.Root.Element("background").Element("color");
+            LayoutRoot.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(BGcolor.Attribute("a").Value), Convert.ToByte(BGcolor.Attribute("r").Value), Convert.ToByte(BGcolor.Attribute("g").Value), Convert.ToByte(BGcolor.Attribute("b").Value)));
+        
             if (IsolatedStorageSettings.ApplicationSettings.Contains("LocationConsent"))
             {
                 // User has opted in or out of Location

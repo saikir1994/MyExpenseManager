@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Xml.Linq;
+using System.Windows.Media;
 
 namespace MyExpenseManager
 {
@@ -20,7 +21,12 @@ namespace MyExpenseManager
             To.Value = DateTime.Today;
             LoadHist();
         }
-
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            XDocument file = XDocument.Load(@"ExpensesFile.xml");
+            XElement BGcolor = file.Root.Element("background").Element("color");
+            LayoutRoot.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(BGcolor.Attribute("a").Value), Convert.ToByte(BGcolor.Attribute("r").Value), Convert.ToByte(BGcolor.Attribute("g").Value), Convert.ToByte(BGcolor.Attribute("b").Value)));
+        }
         private void LoadHist()
         {
             HistList.Children.Clear();

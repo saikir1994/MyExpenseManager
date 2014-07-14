@@ -19,6 +19,7 @@ using Microsoft.Phone.Tasks;
 using System.Device;
 using System.Device.Location;
 using Microsoft.Phone.Maps.Services;
+using System.Windows.Media;
 namespace MyExpenseManager
 {
     public partial class ManageExpenses : PhoneApplicationPage
@@ -108,6 +109,11 @@ namespace MyExpenseManager
             CategoriesList.Text = "";
             CostBox.Text = "";
         }
-
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            XDocument file = XDocument.Load(@"ExpensesFile.xml");
+            XElement BGcolor = file.Root.Element("background").Element("color");
+            LayoutRoot.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(BGcolor.Attribute("a").Value), Convert.ToByte(BGcolor.Attribute("r").Value), Convert.ToByte(BGcolor.Attribute("g").Value), Convert.ToByte(BGcolor.Attribute("b").Value)));
+        }
     }
 }
