@@ -45,12 +45,39 @@ namespace MyExpenseManager
                 ExpanderView Item = new ExpanderView();
                 Item.Header = "Name: " + wish.Attribute("name").Value;
                 Item.FontSize = 30;
+                Item.Hold += Item_Hold;
                 Item.Items.Add(new TextBlock()
                 {
                     Text = "Category: " + wish.Attribute("category").Value                        
                         + "\nCost: " + wish.Attribute("cost").Value
                 });
                 WiList.Children.Add(Item);
+            }
+        }
+
+        void Item_Hold(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            MessageBoxResult Result = MessageBox.Show("Do you want to delete the current Wish?", "Select OK or Cancel", MessageBoxButton.OKCancel);
+            if (Result == MessageBoxResult.OK)
+            {
+                ExpanderView Selected = (ExpanderView)sender;
+                XDocument file = XDocument.Load(@"ExpensesFile.xml");
+                List<XElement> Wishes = file.Root.Element("wishlist").Elements().ToList<XElement>();
+                foreach (XElement wish in Wishes)
+                {
+                    if ("Name: " + wish.Attribute("name").Value== Selected.Header.ToString())
+                    {
+                        var wishset = file.Root.Element("wishlist").Elements();
+                        var delwish = wishset.FirstOrDefault(x => "Name: " + x.Attribute("name").Value == Selected.Header.ToString());
+                        delwish.Remove();
+                        break;
+                    }
+                }
+                using (FileStream stream = File.Open(@"ExpensesFile.xml", FileMode.Truncate, FileAccess.ReadWrite))
+                {
+                    file.Save(stream);
+                }
+                LoadWish();
             }
         }
 

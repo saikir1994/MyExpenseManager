@@ -18,7 +18,7 @@ namespace MyExpenseManager
     public partial class MainPage : PhoneApplicationPage
     {
         StorageFolder local = ApplicationData.Current.LocalFolder;
-        string filename = "ExpensesFile.xml";
+        //string filename = "ExpensesFile.xml";
         // Constructor
         public MainPage()
         {

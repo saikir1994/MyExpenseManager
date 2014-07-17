@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Xml.Linq;
 using System.Windows.Media;
+using System.IO;
 
 namespace MyExpenseManager
 {
@@ -17,7 +18,7 @@ namespace MyExpenseManager
         public PastExpenses()
         {
             InitializeComponent();
-            From.Value = DateTime.Today;
+            From.Value = DateTime.Today.AddMonths(-1);
             To.Value = DateTime.Today;
             LoadHist();
         }
@@ -38,6 +39,7 @@ namespace MyExpenseManager
             foreach (var item in reqitems)
             {
                 ExpanderView Item = new ExpanderView();
+                Item.Hold += Delete_Hold;
                 Item.Header = "Name: " + item.Attribute("name").Value + "  " + "Cost: " + item.Attribute("cost").Value;
                 Item.FontSize = 24;
                 Item.Items.Add(new TextBlock()
@@ -49,6 +51,33 @@ namespace MyExpenseManager
                 HistList.Children.Add(Item);
             }
         }
+
+        void Delete_Hold(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            MessageBoxResult Result = MessageBox.Show("Do you want to delete the current expense?", "Select OK or Cancel", MessageBoxButton.OKCancel);
+            if(Result == MessageBoxResult.OK)
+            {
+                ExpanderView Selected = (ExpanderView)sender;
+                XDocument file = XDocument.Load(@"ExpensesFile.xml");
+                List<XElement> Items = file.Root.Element("items").Elements().ToList<XElement>();
+                foreach (XElement item in Items)
+                {
+                    if("Name: " + item.Attribute("name").Value + "  " + "Cost: " + item.Attribute("cost").Value == Selected.Header.ToString())
+                    {
+                        var itemset = file.Root.Element("items").Elements();
+                        var delitem = itemset.FirstOrDefault(x => "Name: " + x.Attribute("name").Value + "  " + "Cost: " + x.Attribute("cost").Value == Selected.Header.ToString());
+                        delitem.Remove();
+                        break;
+                    }
+                }
+                using (FileStream stream = File.Open(@"ExpensesFile.xml", FileMode.Truncate, FileAccess.ReadWrite))
+                {
+                    file.Save(stream);
+                }
+                LoadHist();
+            }
+        }
+
 
         private void Time_SelectionChanged(object sender, DateTimeValueChangedEventArgs e)
         {

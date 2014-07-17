@@ -34,16 +34,15 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Margin="10,156,14,30" Grid.RowSpan="2">
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="BackGround Color" VerticalAlignment="Top" Margin="10,85,0,0"/>
-            <TextBox x:Name="ColorBox" HorizontalAlignment="Left" Height="72" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Margin="175,60,0,0"/>
-            <Button Content="Choose" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="304,137,0,0" Background="{x:Null}">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="BackGround Color" VerticalAlignment="Top" Margin="30,85,0,0"/>
+            <Button Content="Choose" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="282,62,0,0" Background="{x:Null}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <ec:NavigateToPageAction TargetPage="/ColorPick.xaml"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Reset All Data" VerticalAlignment="Top" Margin="10,232,0,0" Width="160" FontSize="22" Tap="TextBlock_Tap"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Reset All Data" VerticalAlignment="Top" Margin="30,196,0,0" Width="160" FontSize="22" Tap="TextBlock_Tap"/>
         </Grid>
     </Grid>
 

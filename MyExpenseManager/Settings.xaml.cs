@@ -24,7 +24,6 @@ namespace MyExpenseManager
         {
             XDocument file = XDocument.Load(@"ExpensesFile.xml");
             XElement BGcolor = file.Root.Element("background").Element("color");
-            ColorBox.Text = BGcolor.Attribute("hex").Value;
             LayoutRoot.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(BGcolor.Attribute("a").Value),Convert.ToByte(BGcolor.Attribute("r").Value),Convert.ToByte(BGcolor.Attribute("g").Value),Convert.ToByte(BGcolor.Attribute("b").Value)));
         }
 
